@@ -11,7 +11,7 @@ Cabe a nós, quem desenvolve o kernel, projetar as chamadas de sistema que
 poderão ser usadas por quem desenvolve aplicações. Podemos nos inspirar nos
 padrões POSIX ou, se eles parecerem trabalho demais, olhar apenas as chamadas do
 Linux e escolher as que quisermos. Veja a seção
-["Leitura Complementar"](#further-reading-7) no fim do capítulo para
+["Leitura Complementar"](#further-reading-10) no fim do capítulo para
 referências.
 
 ## Implementando Chamadas de Sistema {#implementing-system-calls}

@@ -43,6 +43,11 @@ AUTOLINK = re.compile(r"<((?:https?|ftp)://[^>\s]+)>")
 URL_INLINE = re.compile(r"\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 CITACAO = re.compile(r"\[@([^\]\s,;]+)")
 NOTA = re.compile(r"\[\^([^\]]+)\]")
+# Links do original que estão errados e que a tradução corrige de propósito:
+# {capítulo: {destino no original: destino correto}}. Ver "Erros do original" em STATUS.md.
+LINKS_CORRIGIDOS = {
+    "syscalls": {"#further-reading-7": "#further-reading-10"},
+}
 SEPARADOR_TABELA = re.compile(r"^\s*-{3,}(?:\s+-{3,})*\s*$")
 ITEM_LISTA = re.compile(r"^\s*(?:[-*+]|\d+\.)\s+", re.M)
 ESCAPE = re.compile(r"\\[_*#\[\]<>`\\$]")
@@ -340,8 +345,10 @@ def validar(nome, expected, termos):
 
     # 3. Links, URLs, citações [@chave], notas de rodapé.
     comparar("Links <url>", AUTOLINK.findall(p_o), AUTOLINK.findall(p_t), False)
+    corrigidos = LINKS_CORRIGIDOS.get(nome, {})
     comparar("Destinos de link ](url) e imagens",
-             URL_INLINE.findall(p_o), URL_INLINE.findall(p_t), False)
+             [corrigidos.get(u, u) for u in URL_INLINE.findall(p_o)],
+             URL_INLINE.findall(p_t), False)
     comparar("Citações [@chave]", CITACAO.findall(p_o), CITACAO.findall(p_t), False)
     comparar("Notas de rodapé [^n]", NOTA.findall(p_o), NOTA.findall(p_t), False)
 

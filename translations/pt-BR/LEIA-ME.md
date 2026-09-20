@@ -115,6 +115,4 @@ e rode `validar.py --todos` para ver o que a mudança afeta.
 
 - O `template.html` remove o link "PDF version" do topo (o PDF só existe se você
   rodar `make pt-BR-pdf`); passe `-V pdf=1` ao pandoc se quiser o link.
-- `syscalls.md` tem, no original, um link para `#further-reading-7` que deveria
-  ser `#further-reading-10`. Mantido idêntico (ver `STATUS.md`).
 - O PDF compila, mas não foi inspecionado visualmente (sem `pdftoppm` na máquina).

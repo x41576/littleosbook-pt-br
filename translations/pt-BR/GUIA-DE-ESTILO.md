@@ -87,7 +87,8 @@ Títulos: use *Title Case* em português (preposições e artigos em minúscula)
 O original usa links internos assim: `[chapter 5](#segmentation)` e
 `the section ["Further Reading"](#further-reading-7)`.
 
-- Traduza o texto, mantenha o destino: `[capítulo 5](#segmentation)`.
+- Traduza o texto, mantenha o destino: `[capítulo 5](#segmentation)`. A única exceção
+  é um destino errado do original, listado em `LINKS_CORRIGIDOS` no `validar.py`.
 - Quando o texto cita um capítulo pelo nome, use o **título oficial pt-BR** da
   tabela de `STATUS.md` (mesmo que aquele capítulo ainda não tenha sido
   traduzido), nas aspas do original: `["Paginação"](#paging)`.
