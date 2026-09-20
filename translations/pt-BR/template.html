@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html$if(lang)$ lang="$lang$"$endif$>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+$for(author-meta)$
+  <meta name="author" content="$author-meta$" />
+$endfor$
+$if(date-meta)$
+  <meta name="date" content="$date-meta$" />
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$if(pagetitle)$$pagetitle$$endif$</title>
+$if(highlighting-css)$
+  <style type="text/css">
+$highlighting-css$
+  </style>
+$endif$
+$for(css)$
+  <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
+$endfor$
+$if(math)$
+  $math$
+$endif$
+  <style type="text/css">
+    /* Referências: o pandoc atual gera <div>s de bloco (número e texto em linhas
+       separadas); o original tinha um <p> por entrada, "[1] Autor, ...". */
+    #refs .csl-entry { margin: 1em 0; line-height: 140%; }
+    #refs .csl-left-margin, #refs .csl-right-inline { display: inline; margin: 0; padding: 0; }
+  </style>
+$for(header-includes)$
+  $header-includes$
+$endfor$
+</head>
+<body>
+<div id='wrapper'>
+<div id="$idprefix$header">
+<h1 class="title">$title$</h1>
+$for(author)$
+<h2 class="author">$author$</h2>
+$endfor$
+</div>
+<div class="subheader">
+$if(date)$
+<a href="https://github.com/littleosbook/littleosbook/">$date$</a>
+$endif$
+$if(pdf)$<a class="pdflink" href="book.pdf" title="Versão em PDF">Versão em PDF</a>$endif$
+</div>
+<div id='content'>
+<p class="traducao"><em>Tradução não oficial para português do Brasil, para uso pessoal, de
+<a href="https://github.com/littleosbook/littleosbook/">The little book about OS development</a>
+(Erik Helin e Adam Renberg), sob a licença
+<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons BY-NC-SA 3.0</a>.</em></p>
+$for(include-before)$
+$include-before$
+$endfor$
+$if(title)$
+$endif$
+$if(toc)$
+<div id="$idprefix$TOC">
+<h1>Sumário</h1>
+$if(table-of-contents)$$table-of-contents$$else$$toc$$endif$
+</div>
+$endif$
+$body$
+$for(include-after)$
+$include-after$
+$endfor$
+</div>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        var tables = document.getElementsByTagName("table");
+        for (var i = 0; i < tables.length; ++i) {
+            var table = tables[i];
+            if (table.getElementsByTagName("caption").length > 0) {
+                table.className += " has_caption";
+            }
+        }
+     })();
+</script>
+</body>
+</html>

@@ -4,3 +4,7 @@ header.log
 
 # vim
 *.swp
+
+# traduções
+/build/
+/translations/pt-BR/trabalho/

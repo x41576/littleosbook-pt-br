@@ -1,0 +1,10 @@
+% Variante do header.tex da raiz para pandoc >= 2: o hyperref só é carregado
+% depois deste arquivo, então \hypersetup precisa esperar o início do documento.
+\usepackage{fullpage}
+
+\AtBeginDocument{
+  \hypersetup{
+    pdfborder = {0 0 0},
+    colorlinks = false
+  }
+}

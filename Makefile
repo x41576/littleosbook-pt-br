@@ -36,3 +36,6 @@ release: book.html book.pdf
 
 clean:
 	rm -f book.pdf book.html
+
+# Versão em português (ver translations/pt-BR/LEIA-ME.md)
+-include translations/pt-BR/traducao.mk

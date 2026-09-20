@@ -1,0 +1,59 @@
+# Compila o livro em português (pt-BR) e publica no GitHub Pages.
+#
+# Requer, uma única vez, em Settings > Pages > Build and deployment:
+#   Source: GitHub Actions
+name: Publicar site no GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Uma publicação por vez; uma nova execução cancela a anterior ainda em andamento.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # O build da tradução exige pandoc >= 2.11 (--citeproc); o do ubuntu-latest atende.
+      - name: Instalar o pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+          pandoc --version | head -1
+
+      - name: Compilar o livro (pt-BR)
+        run: make pt-BR
+
+      # O Pages serve index.html; o make gera book.html (mais book.css, images/ e files/).
+      - name: Montar o site
+        run: |
+          mkdir -p _site
+          cp -r build/pt-BR/. _site/
+          mv _site/book.html _site/index.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

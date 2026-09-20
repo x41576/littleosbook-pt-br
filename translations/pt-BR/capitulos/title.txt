@@ -1,0 +1,3 @@
+% O pequeno livro sobre desenvolvimento de sistemas operacionais
+% Erik Helin, Adam Renberg
+% 2015-01-19 | Commit: fe83e27dab3c39930354d2dea83f6d4ee2928212
